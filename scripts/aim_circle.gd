@@ -4,7 +4,10 @@ extends Sprite2D
 @export var DISTANCE = 25.0
 @export var DEADZONE = 0.15
 
+## The direction that the player is aiming in with the right joystick; it is used for firing bullets and calculating the slowdown factor.
 var aim_dir: Vector2
+
+## The direction the player is looking in, usually set to the aim direction. If the right joystick is released, and the aim direction is consequently not set, this will be set to the movement direction.
 var look_dir: Vector2
 
 
