@@ -1,8 +1,9 @@
 extends Node2D
 
 
-@onready var player_parent = $"Players"
+# CURRENTLY OBSOLOTE
+# USE AS SCENE MANAGER LATER
 
 
 func _on_ready() -> void:
-	PlayerManager.add_player(player_parent)
+	pass

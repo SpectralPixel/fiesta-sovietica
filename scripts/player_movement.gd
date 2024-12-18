@@ -4,32 +4,28 @@ extends CharacterBody2D
 @export var SPEED = 4000
 @export var FRICTION = 500
 @export var SLOWDOWN = 0.4
+@export var DEADZONE = 0.05
 
 var index: int
-var move_binds: Dictionary
+var gamepad: int
 var direction: Vector2
 
 
-func _ready() -> void:
-	move_binds = {
-		"left":  "move_left_p%s"  % index,
-		"right": "move_right_p%s" % index,
-		"up":    "move_up_p%s"    % index,
-		"down":  "move_down_p%s"  % index,
-	}
-
-
 func _process(_delta: float) -> void:
-	direction = Input.get_vector(
-		move_binds["left"],
-		move_binds["right"],
-		move_binds["up"],
-		move_binds["down"],
-	).normalized()
+	var dir_x = Input.get_joy_axis(gamepad, JOY_AXIS_LEFT_X)
+	var dir_y = Input.get_joy_axis(gamepad, JOY_AXIS_LEFT_Y)
+	
+	direction = Vector2(
+		dir_x if abs(dir_x) > DEADZONE else 0,
+		dir_y if abs(dir_y) > DEADZONE else 0,
+	)
+	
+	if direction.length() > 1:
+		direction = direction.normalized()
 
 
 func _physics_process(delta: float) -> void:
-	if direction:
+	if direction.length():
 		velocity = SPEED * delta * slowdown_factor() * direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
@@ -51,5 +47,6 @@ func get_player_index() -> int:
 	return index
 
 
-func set_player_index(_index: int):
+func set_player_data(_index: int, _gamepad: int):
 	self.index = _index
+	self.gamepad = _gamepad
