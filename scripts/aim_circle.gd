@@ -9,13 +9,11 @@ var look_dir: Vector2
 
 
 func _process(_delta: float) -> void:
-	var dir_x = Input.get_joy_axis(get_parent().gamepad, JOY_AXIS_RIGHT_X)
-	var dir_y = Input.get_joy_axis(get_parent().gamepad, JOY_AXIS_RIGHT_Y)
-	
 	var dir = Vector2(
-		dir_x if abs(dir_x) > DEADZONE else 0.,
-		dir_y if abs(dir_y) > DEADZONE else 0.,
-	).normalized()
+		Input.get_joy_axis(get_parent().gamepad, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(get_parent().gamepad, JOY_AXIS_RIGHT_Y),
+	)
+	dir = dir.normalized() if dir.length() > DEADZONE else Vector2.ZERO
 	
 	# Only set if non-zero
 	if dir:
