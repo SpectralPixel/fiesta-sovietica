@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 
+@onready var aim_circle: Sprite2D = $"Aim Circle"
+
 @export var SPEED = 4000
 @export var FRICTION = 500
 @export var SLOWDOWN = 0.4
-@export var DEADZONE = 0.05
+@export var DEADZONE = 0.07
 
 var index: int
 var gamepad: int
@@ -37,8 +39,7 @@ func _physics_process(delta: float) -> void:
 ## After all, a person walking backwards will be slower than a person walking forwards.
 ## This factor exists for game design reasons, to prevent people from retreating and gunning backwards simultaneously.
 func slowdown_factor() -> float:
-	var mouse_pos = get_local_mouse_position().normalized()
-	var dot = direction.dot(mouse_pos)
+	var dot = direction.dot(aim_circle.aim_dir)
 	var slowdown_factor = (dot + 1) * (SLOWDOWN / 2) + (1 - SLOWDOWN)
 	return slowdown_factor
 
