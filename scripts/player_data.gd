@@ -21,3 +21,7 @@ func instantiate(parent: Node):
 	instance.set_player_data(index, gamepad)
 	instance.translate(Vector2(randf_range(-50, 50), randf_range(-50, 50)))
 	parent.add_child(instance)
+
+
+func destroy():
+	instance.queue_free()
