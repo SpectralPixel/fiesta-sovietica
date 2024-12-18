@@ -28,7 +28,7 @@ func add_player(gamepad: int):
 	# Don't instantiate player, that is done in the container object
 	players.append(player)
 	
-	emit_signal("player_added", player)
+	player_added.emit(player)
 
 
 func remove_player(gamepad: int):

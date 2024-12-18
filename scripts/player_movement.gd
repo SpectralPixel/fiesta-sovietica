@@ -18,8 +18,8 @@ func _process(_delta: float) -> void:
 	var dir_y = Input.get_joy_axis(gamepad, JOY_AXIS_LEFT_Y)
 	
 	direction = Vector2(
-		dir_x if abs(dir_x) > DEADZONE else 0,
-		dir_y if abs(dir_y) > DEADZONE else 0,
+		dir_x if abs(dir_x) > DEADZONE else 0.,
+		dir_y if abs(dir_y) > DEADZONE else 0.,
 	)
 	
 	if direction.length() > 1:
@@ -40,8 +40,7 @@ func _physics_process(delta: float) -> void:
 ## This factor exists for game design reasons, to prevent people from retreating and gunning backwards simultaneously.
 func slowdown_factor() -> float:
 	var dot = direction.dot(aim_circle.aim_dir)
-	var slowdown_factor = (dot + 1) * (SLOWDOWN / 2) + (1 - SLOWDOWN)
-	return slowdown_factor
+	return (dot + 1) * (SLOWDOWN / 2) + (1 - SLOWDOWN)
 
 
 func get_player_index() -> int:
