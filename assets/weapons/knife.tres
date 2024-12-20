@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dv80muqyn53me"]
+
+[ext_resource type="Script" path="res://scripts/weapon_data.gd" id="1_60mak"]
+[ext_resource type="Texture2D" uid="uid://3jp7u1yvqm6v" path="res://assets/weapons/sprites/knife.png" id="2_agg0h"]
+
+[resource]
+script = ExtResource("1_60mak")
+tex = ExtResource("2_agg0h")
+tex_scale = 1.0
+tex_distance = 10.0
+melee = false
+damage = 0.2
+fire_rate = 5.0
+semi_auto = false

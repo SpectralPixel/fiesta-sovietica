@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://h56sp6b114p8"]
+[gd_scene load_steps=29 format=3 uid="uid://h56sp6b114p8"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_l38ie"]
 [ext_resource type="Texture2D" uid="uid://bmljwi5o558vy" path="res://assets/characters/1 idle.png" id="1_lfmhe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/aim_circle.gd" id="3_x1hoc"]
 [ext_resource type="Script" path="res://scripts/player_animation.gd" id="4_2y1tr"]
 [ext_resource type="PackedScene" uid="uid://gjyokpkmsl6l" path="res://scenes/weapon.tscn" id="4_akpyg"]
+[ext_resource type="Texture2D" uid="uid://3jp7u1yvqm6v" path="res://assets/weapons/sprites/knife.png" id="5_ph8i5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_670fx"]
 atlas = ExtResource("1_lfmhe")
@@ -173,21 +174,22 @@ radius = 6.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_l38ie")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2)
-sprite_frames = SubResource("SpriteFrames_5evk3")
-animation = &"idle_down"
-autoplay = "idle_down"
-script = ExtResource("4_2y1tr")
-
 [node name="Weapon" parent="." instance=ExtResource("4_akpyg")]
-position = Vector2(14, 0)
+position = Vector2(13, 3)
 scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_ph8i5")
 
 [node name="Aim Circle" type="Sprite2D" parent="."]
 position = Vector2(25, 0)
 texture = ExtResource("2_iyqwy")
 script = ExtResource("3_x1hoc")
 
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5evk3")
+animation = &"idle_down"
+autoplay = "idle_down"
+script = ExtResource("4_2y1tr")
+
 [node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_g68d7")

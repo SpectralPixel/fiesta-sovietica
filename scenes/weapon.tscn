@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://gjyokpkmsl6l"]
+
+[ext_resource type="Texture2D" uid="uid://3jp7u1yvqm6v" path="res://assets/weapons/sprites/knife.png" id="1_x47qn"]
+[ext_resource type="Script" path="res://scripts/player_hand.gd" id="2_ywuyw"]
+
+[node name="Weapon" type="Sprite2D"]
+texture = ExtResource("1_x47qn")
+script = ExtResource("2_ywuyw")

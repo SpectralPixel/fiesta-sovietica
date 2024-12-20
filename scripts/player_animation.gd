@@ -28,7 +28,9 @@ func player_animation(direction: Vector2, velocity: Vector2):
 	else:
 		animation_state = "idle"
 	
-	speed_scale = get_parent().slowdown_factor() * 1.5
+	var slow_factor = get_parent().slowdown_factor()
+	slow_factor = slow_factor * 1.5 if slow_factor > 0.95 && slow_factor < 1.05 else 1
+	speed_scale = slow_factor * get_parent().direction.length()
 	
 	flip_h = is_flipped
 	play("%s_%s" % [animation_state, animation_direction])

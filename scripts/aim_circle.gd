@@ -28,4 +28,4 @@ func _process(_delta: float) -> void:
 		look_dir = get_parent().direction
 		visible = false
 	
-	position = aim_dir * 25
+	position = aim_dir * DISTANCE

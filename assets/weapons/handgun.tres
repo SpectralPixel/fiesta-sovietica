@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://sppqcndqapbp"]
+
+[ext_resource type="Script" path="res://scripts/weapon_data.gd" id="1_twg4c"]
+[ext_resource type="Texture2D" uid="uid://ivoddckumlna" path="res://assets/weapons/sprites/handgun.png" id="2_wt2pg"]
+
+[resource]
+script = ExtResource("1_twg4c")
+tex = ExtResource("2_wt2pg")
+tex_scale = 0.1
+tex_distance = 10.0
+melee = true
+damage = 0.6
+fire_rate = 1.3
+semi_auto = false
